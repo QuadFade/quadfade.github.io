@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "EQRPGWebHelper",
   "resources": {
-    "hash": "sha256-OYh9dxmC/uYaU8FCADGQPuUsQa/vxgC/NPniU1nzCl4=",
+    "hash": "sha256-0K8/IdxNeiTzMaylZB6rfz7ZmbeXrFbuQ4JtKL8g74A=",
     "jsModuleNative": {
       "dotnet.native.8.0.13.0x2wgwradr.js": "sha256-xNQsYHtL1vcbrVTHDZAwJM4WovpoyjsrM2C6FQ8cW1w="
     },
@@ -18,7 +18,7 @@
     },
     "assembly": {
       "Blazored.LocalStorage.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
-      "EQRPGWebHelper.wasm": "sha256-i58uC45MdEWVE20/QFG4pIE893D3c/ahv8hekixXLNE=",
+      "EQRPGWebHelper.wasm": "sha256-U/nlOQ0EY6oS3+WOTGbhaj2OXnVJPOrcoVBgnEajVb0=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-BHSR4nSxXw7T4krswwf6eCgylX7tplSkR44QuLIFBKs=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-0KisFlCQGsFQexOgjsJ2pZiu6mZAgVpvKoIM5ngHeD4=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-jrdFRjrF1131MZ3HGQVsI3dX8cLdZvPz85lsBltxjSM=",
