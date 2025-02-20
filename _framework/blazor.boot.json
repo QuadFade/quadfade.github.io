@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "EQRPGWebHelper",
   "resources": {
-    "hash": "sha256-W2k91anzD9JXnleEFP9wTDyGzdgrnhTrRK9PaHSz2XI=",
+    "hash": "sha256-kx0P87wBzv+YTXkUS/ZolKK2YQwCOrQi+yzxpkEp7a0=",
     "jsModuleNative": {
       "dotnet.native.8.0.13.0x2wgwradr.js": "sha256-xNQsYHtL1vcbrVTHDZAwJM4WovpoyjsrM2C6FQ8cW1w="
     },
@@ -17,7 +17,7 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "EQRPGWebHelper.wasm": "sha256-odg/tqknyJimZg3fxvoQnUIprOakB7dWRts4LuABrLo=",
+      "EQRPGWebHelper.wasm": "sha256-quML+LMoJcZSevfpc4KABF7NuKGGlw9+40uR0gL/4ek=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-Dyc7RWK2McGVUnEGKQWezf5SQhR8QlsVYP1L0SQ0txk=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-0KisFlCQGsFQexOgjsJ2pZiu6mZAgVpvKoIM5ngHeD4=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-jrdFRjrF1131MZ3HGQVsI3dX8cLdZvPz85lsBltxjSM=",
