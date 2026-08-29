@@ -711,17 +711,21 @@ select:focus {
 
     .menu-header { display: none; }
 
-    /* Single row: allow all buttons inline without wrapping */
+    /* Single row: allow all buttons inline without wrapping and let them shrink to fit */
     .menu-grid {
         display: flex;
         flex-wrap: nowrap;
         gap: var(--spacing-sm);
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between; /* distribute evenly */
+        width: 100%;
     }
 
     .menu-button {
-        padding: 0.2rem 0.5rem;
+        /* allow buttons to shrink so all fit on a single row */
+        flex: 1 1 0;
+        min-width: 0; /* allow shrinking below intrinsic size */
+        padding: 0.2rem 0.4rem;
         border-radius: 0.35rem;
         height: auto;
         aspect-ratio: unset;
@@ -729,15 +733,14 @@ select:focus {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.12rem;
-        min-width: 64px;
+        gap: 0.1rem;
     }
 
-    .menu-icon { font-size: 1rem; }
-    .menu-label { font-size: 0.65rem; }
+    .menu-icon { font-size: 0.95rem; }
+    .menu-label { font-size: 0.62rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; width: 100%; }
 
-    /* ensure the top bar doesn't overflow */
-    .menu-panel { white-space: nowrap; }
+    /* prevent horizontal scroll by hiding overflow on the top bar container */
+    .menu-panel { overflow-x: hidden; }
 
     .menu-overlay {
         display: none;
