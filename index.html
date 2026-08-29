@@ -28,75 +28,180 @@
             <button class="menu-close" id="menu-close" aria-label="Close menu">&times;</button>
         </div>
         <div class="menu-grid">
-            <button class="menu-button" data-icon="📦">
+            <button class="menu-button" data-page="inventory" data-icon="📦">
                <span class="menu-icon">📦</span>
                <span class="menu-label">Inventory</span>
             </button>
-            <button class="menu-button" data-icon="👤">
+            <button class="menu-button" data-page="character" data-icon="👤">
                <span class="menu-icon">👤</span>
                <span class="menu-label">Character</span>
             </button>
-            <button class="menu-button" data-icon="📊">
+            <button class="menu-button" data-page="stats" data-icon="📊">
                <span class="menu-icon">📊</span>
                <span class="menu-label">Stats</span>
             </button>
-            <button class="menu-button" data-icon="⚔️">
+            <button class="menu-button" data-page="skills" data-icon="⚔️">
                <span class="menu-icon">⚔️</span>
                <span class="menu-label">Skills</span>
             </button>
-            <button class="menu-button" data-icon="🛠️">
+            <button class="menu-button" data-page="professions" data-icon="🛠️">
                <span class="menu-icon">🛠️</span>
                <span class="menu-label">Professions</span>
             </button>
-            <button class="menu-button" data-icon="⚙️">
+            <button class="menu-button" data-page="settings" data-icon="⚙️">
                <span class="menu-icon">⚙️</span>
                <span class="menu-label">Settings</span>
             </button>
-            <button class="menu-button" data-icon="🗺️">
+            <button class="menu-button" data-page="quests" data-icon="🗺️">
                <span class="menu-icon">🗺️</span>
                <span class="menu-label">Quests</span>
             </button>
-            <button class="menu-button" data-icon="🏆">
+            <button class="menu-button" data-page="achievements" data-icon="🏆">
                <span class="menu-icon">🏆</span>
                <span class="menu-label">Achievements</span>
             </button>
-            <button class="menu-button" data-icon="📖">
+            <button class="menu-button" data-page="codex" data-icon="📖">
                <span class="menu-icon">📖</span>
                <span class="menu-label">Codex</span>
             </button>
         </div>
     </nav>
 
-    <div id="app"></div>
+    <main id="app" class="pages">
+        <section id="inventory" class="page active">
+            <h1>Inventory</h1>
+            <p class="text-muted">Your equipment and items.</p>
+            <div class="kv-list" id="inventory-list">
+                <div class="kv-item">Sword</div>
+                <div class="kv-item">Leather Armor</div>
+                <div class="kv-item">Health Potion (x3)</div>
+                <div class="kv-item">Torch</div>
+            </div>
+        </section>
 
-    <script src="_framework/blazor.webassembly.js"></script>
+        <section id="character" class="page">
+            <h1>Character</h1>
+            <p class="text-muted">Character overview and biography.</p>
+            <div class="card">
+                <h3>Name: Alden the Bold</h3>
+                <p>Level: 5</p>
+                <p>Class: Ranger</p>
+                <p class="mt-2">A weathered traveler seeking fortune and glory.</p>
+            </div>
+        </section>
+
+        <section id="stats" class="page">
+            <h1>Stats</h1>
+            <div class="kv-list">
+                <div class="kv-item">Strength: 12</div>
+                <div class="kv-item">Dexterity: 16</div>
+                <div class="kv-item">Constitution: 14</div>
+                <div class="kv-item">Intelligence: 10</div>
+                <div class="kv-item">Wisdom: 11</div>
+                <div class="kv-item">Charisma: 13</div>
+            </div>
+        </section>
+
+        <section id="skills" class="page">
+            <h1>Skills</h1>
+            <ul>
+                <li>Archery (Level 3)</li>
+                <li>Stealth (Level 2)</li>
+                <li>Survival (Level 2)</li>
+            </ul>
+        </section>
+
+        <section id="professions" class="page">
+            <h1>Professions</h1>
+            <p class="text-muted">Crafting and trade skills.</p>
+            <ul>
+                <li>Blacksmithing</li>
+                <li>Herbalism</li>
+            </ul>
+        </section>
+
+        <section id="settings" class="page">
+            <h1>Settings</h1>
+            <p class="text-muted">Game preferences and accessibility.</p>
+            <div class="form-group">
+                <label class="form-label">Text Size</label>
+                <select>
+                    <option>Small</option>
+                    <option selected>Normal</option>
+                    <option>Large</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="quests" class="page">
+            <h1>Quests</h1>
+            <p class="text-muted">Active and completed quests.</p>
+            <ul>
+                <li>Find the Lost Relic (Active)</li>
+                <li>Deliver Letter to Mayor (Completed)</li>
+            </ul>
+        </section>
+
+        <section id="achievements" class="page">
+            <h1>Achievements</h1>
+            <p class="text-muted">Milestones you've earned.</p>
+            <ul>
+                <li>First Blood</li>
+                <li>Treasure Hunter</li>
+            </ul>
+        </section>
+
+        <section id="codex" class="page">
+            <h1>Codex</h1>
+            <p class="text-muted">Lore, items, and monsters reference.</p>
+            <p>Codex entries will appear here.</p>
+        </section>
+    </main>
+
     <script>
-        // Menu toggle functionality
+        // Menu toggle and routing functionality
         const hamburgerToggle = document.getElementById('hamburger-toggle');
         const menuPanel = document.getElementById('menu-panel');
         const menuOverlay = document.getElementById('menu-overlay');
         const menuClose = document.getElementById('menu-close');
+        const appPages = document.querySelectorAll('.page');
+
+        function setActivePage(id) {
+            appPages.forEach(p => p.classList.toggle('active', p.id === id));
+        }
+
+        function openMenu() {
+            menuPanel.classList.add('active');
+            menuOverlay.classList.add('active');
+            hamburgerToggle.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            menuPanel.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            hamburgerToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
         function toggleMenu() {
-            menuPanel.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            document.body.style.overflow = menuPanel.classList.contains('active') ? 'hidden' : '';
+            if (menuPanel.classList.contains('active')) closeMenu(); else openMenu();
         }
 
         hamburgerToggle.addEventListener('click', toggleMenu);
-        menuClose.addEventListener('click', toggleMenu);
-        menuOverlay.addEventListener('click', toggleMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
 
-        // Close menu when a menu button is clicked
         document.querySelectorAll('.menu-button').forEach(button => {
             button.addEventListener('click', function(e) {
-               // Don't close if it's the close button
-               if (!e.target.closest('.menu-close')) {
-                   toggleMenu();
-                   console.log('Menu item clicked:', this.dataset.icon);
-               }
+                const page = this.dataset.page;
+                if (page) setActivePage(page);
+                closeMenu();
             });
         });
+
+        // Default page
+        setActivePage('inventory');
     </script>
 </body>
 

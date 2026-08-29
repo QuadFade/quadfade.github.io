@@ -392,35 +392,38 @@ select:focus {
     transform: translateY(-2px);
 }
 
-/* List Styles */
-.spell-list {
-    list-style-type: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+/* Page Layouts for RPG */
+.pages {
+    padding: var(--spacing-xl);
+    display: block;
 }
 
-.spell-item {
-    background: var(--color-bg-light);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
+.page {
+    display: none;
+    background-color: var(--color-bg-light);
     border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
     box-shadow: var(--shadow-sm);
-    transition: all var(--transition-base);
-    display: flex;
-    flex-direction: column;
+    margin-bottom: var(--spacing-lg);
 }
 
-.spell-item:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-primary);
-    transform: translateY(-4px);
+.page.active {
+    display: block;
 }
 
-.spell-item h3 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+/* Simple utility for key-value lists (character stats, etc) */
+.kv-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.kv-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-gray);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
 }
 
 /* Action Buttons */
@@ -595,7 +598,8 @@ select:focus {
 /* Menu Grid */
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* Mobile: always 2 columns wide regardless of number of buttons */
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-lg);
 }
 
