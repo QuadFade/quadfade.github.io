@@ -649,39 +649,39 @@ select:focus {
     color: var(--color-text-light);
 }
 
-/* Desktop Responsiveness - Hide hamburger on larger screens */
-@media (min-width: 769px) {
+/* Desktop & Tablet layout rules */
+
+/* Tablet: show top navbar with 2 rows (600px - 1023px) */
+@media (min-width: 600px) and (max-width: 1023px) {
     .hamburger-menu {
         display: none;
     }
 
     .menu-panel {
         position: static;
-        width: auto;
-        max-width: 100%;
+        width: 100%;
         height: auto;
         background-color: transparent;
         box-shadow: none;
-        padding: 0;
+        padding: 0 var(--spacing-md);
+        overflow: visible;
     }
 
     .menu-header {
         display: none;
     }
 
+    /* Two rows: split into 5 columns so 10 buttons make two rows */
     .menu-grid {
-        /* keep nine columns but reduce spacing and make buttons compact to avoid overflow */
-        grid-template-columns: repeat(9, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: var(--spacing-sm);
         max-width: 100%;
     }
 
-    /* Compact menu-button styles for desktop top bar */
     .menu-button {
-        padding: 0.25rem 0.4rem;
+        padding: 0.25rem 0.5rem;
         border-radius: 0.35rem;
-        height: auto;
-        aspect-ratio: unset;
+        aspect-ratio: 1 / 1;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -689,20 +689,55 @@ select:focus {
         gap: 0.15rem;
     }
 
-    .menu-icon {
-        font-size: 1.1rem;
-        margin-bottom: 0.15rem;
+    .menu-icon { font-size: 1.2rem; }
+    .menu-label { font-size: 0.75rem; }
+}
+
+/* Desktop: single row (>=1024px) */
+@media (min-width: 1024px) {
+    .hamburger-menu {
+        display: none;
     }
 
-    .menu-label {
-        font-size: 0.65rem;
-        font-weight: 600;
-    }
-
-    /* prevent overflow and ensure clean layout */
     .menu-panel {
-        overflow: hidden;
+        position: static;
+        width: 100%;
+        height: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0 var(--spacing-md);
+        overflow: visible;
     }
+
+    .menu-header { display: none; }
+
+    /* Single row: allow all buttons inline without wrapping */
+    .menu-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: var(--spacing-sm);
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .menu-button {
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.35rem;
+        height: auto;
+        aspect-ratio: unset;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.12rem;
+        min-width: 64px;
+    }
+
+    .menu-icon { font-size: 1rem; }
+    .menu-label { font-size: 0.65rem; }
+
+    /* ensure the top bar doesn't overflow */
+    .menu-panel { white-space: nowrap; }
 
     .menu-overlay {
         display: none;
