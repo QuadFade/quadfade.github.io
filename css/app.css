@@ -746,3 +746,41 @@ select:focus {
         display: none;
     }
 }
+
+/* Force hamburger-only navigation across all sizes */
+/* Overrides previous desktop/tablet topbar rules so only the hamburger is shown */
+.hamburger-menu {
+    display: flex !important;
+}
+
+/* Keep panel hidden until opened */
+.menu-panel {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 90% !important;
+    max-width: 360px !important;
+    height: 100vh !important;
+    z-index: 950 !important;
+    background-color: var(--color-bg-light) !important;
+    box-shadow: var(--shadow-xl) !important;
+    transition: left var(--transition-base) !important;
+    overflow-y: auto !important;
+    padding: var(--spacing-xl) var(--spacing-lg) !important;
+}
+
+.menu-panel.active {
+    left: 0 !important;
+}
+
+/* Overlay active rules */
+.menu-overlay { display: none; }
+.menu-overlay.active { display: block; background-color: rgba(0,0,0,0.5); pointer-events:auto; }
+
+/* Menu grid: 2 columns for hamburger panel */
+.menu-grid { grid-template-columns: repeat(2, 1fr) !important; gap: var(--spacing-lg) !important; }
+
+/* Ensure desktop topbar elements are not visible */
+@media (min-width: 600px) {
+    .menu-panel, .menu-grid { /* keep using panel */ }
+}
