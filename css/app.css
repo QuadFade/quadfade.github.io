@@ -711,35 +711,31 @@ select:focus {
 
     .menu-header { display: none; }
 
-    /* Single row: allow all buttons inline without wrapping and let them shrink to fit */
+    /* Single row: use grid to evenly size 10 buttons across available width */
     .menu-grid {
-        display: flex;
-        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
         gap: var(--spacing-sm);
         align-items: center;
-        justify-content: space-between; /* distribute evenly */
         width: 100%;
     }
 
     .menu-button {
-        /* allow buttons to shrink so all fit on a single row */
-        flex: 1 1 0;
-        min-width: 0; /* allow shrinking below intrinsic size */
-        padding: 0.2rem 0.4rem;
-        border-radius: 0.35rem;
-        height: auto;
-        aspect-ratio: unset;
-        display: inline-flex;
+        /* buttons take full grid cell and are centered */
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 0.35rem 0.4rem;
+        border-radius: 0.35rem;
+        min-width: 0;
         gap: 0.1rem;
     }
 
-    .menu-icon { font-size: 0.95rem; }
-    .menu-label { font-size: 0.62rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; width: 100%; }
+    .menu-icon { font-size: 1rem; }
+    .menu-label { font-size: 0.7rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; width: 100%; }
 
-    /* prevent horizontal scroll by hiding overflow on the top bar container */
+    /* ensure the top bar doesn't create horizontal scroll */
     .menu-panel { overflow-x: hidden; }
 
     .menu-overlay {
