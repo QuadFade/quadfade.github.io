@@ -777,10 +777,63 @@ select:focus {
 .menu-overlay { display: none; }
 .menu-overlay.active { display: block; background-color: rgba(0,0,0,0.5); pointer-events:auto; }
 
-/* Menu grid: 2 columns for hamburger panel */
-.menu-grid { grid-template-columns: repeat(2, 1fr) !important; gap: var(--spacing-lg) !important; }
-
-/* Ensure desktop topbar elements are not visible */
-@media (min-width: 600px) {
-    .menu-panel, .menu-grid { /* keep using panel */ }
+/* Landing page app grid styles */
+.landing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    align-items: stretch;
 }
+
+.app-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    min-height: 120px;
+}
+
+.app-tile:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.tile-icon {
+    font-size: 2.2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.tile-label {
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.tile-url {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 800px) {
+    .landing-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .landing-grid { grid-template-columns: 1fr; }
+}
+
+/* Hide any leftover menu elements if present */
+.hamburger-menu, .menu-panel, .menu-overlay, .menu-grid, .menu-button { display: none !important; }
+
+/* Tidy container spacing */
+.container { padding: var(--spacing-xl); }
+
+/* Ensure body uses dark background */
+body { background-color: var(--color-bg-light); }

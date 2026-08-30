@@ -13,401 +13,65 @@
 </head>
 
 <body>
-    <!-- Hamburger Menu Toggle -->
-    <button class="hamburger-menu" id="hamburger-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+    <header class="container">
+        <a class="navbar-brand" href="/">QuadFade</a>
+        <p class="text-muted">A collection of small web applications and demos. Click any tile to open the hosted app.</p>
+    </header>
 
-    <!-- Side Menu Panel -->
-    <div class="menu-overlay" id="menu-overlay"></div>
-    <nav class="menu-panel" id="menu-panel">
-        <div class="menu-header">
-            <h2>Menu</h2>
-            <button class="menu-close" id="menu-close" aria-label="Close menu">&times;</button>
-        </div>
-        <div class="menu-grid">
-            <button class="menu-button" data-page="inventory" data-icon="📦">
-               <span class="menu-icon">📦</span>
-               <span class="menu-label">Inventory</span>
-            </button>
-            <button class="menu-button" data-page="character" data-icon="👤">
-               <span class="menu-icon">👤</span>
-               <span class="menu-label">Character</span>
-            </button>
-            <button class="menu-button" data-page="stats" data-icon="📊">
-               <span class="menu-icon">📊</span>
-               <span class="menu-label">Stats</span>
-            </button>
-            <button class="menu-button" data-page="skills" data-icon="⚔️">
-               <span class="menu-icon">⚔️</span>
-               <span class="menu-label">Skills</span>
-            </button>
-            <button class="menu-button" data-page="professions" data-icon="🛠️">
-               <span class="menu-icon">🛠️</span>
-               <span class="menu-label">Professions</span>
-            </button>
-            <button class="menu-button" data-page="adventure" data-icon="🗡️">
-               <span class="menu-icon">🗡️</span>
-               <span class="menu-label">Adventure</span>
-            </button>
-            <button class="menu-button" data-page="settings" data-icon="⚙️">
-               <span class="menu-icon">⚙️</span>
-               <span class="menu-label">Settings</span>
-            </button>
-            <button class="menu-button" data-page="quests" data-icon="🗺️">
-               <span class="menu-icon">🗺️</span>
-               <span class="menu-label">Quests</span>
-            </button>
-            <button class="menu-button" data-page="achievements" data-icon="🏆">
-               <span class="menu-icon">🏆</span>
-               <span class="menu-label">Achievements</span>
-            </button>
-            <button class="menu-button" data-page="codex" data-icon="📖">
-               <span class="menu-icon">📖</span>
-               <span class="menu-label">Codex</span>
-            </button>
-        </div>
-    </nav>
-
-    <main id="app" class="pages">
-        <section id="inventory" class="page active">
-            <h1>Inventory</h1>
-            <p class="text-muted">Your equipment and items.</p>
-            <div class="kv-list" id="inventory-list">
-                <!-- populated dynamically -->
-            </div>
-        </section>
-
-        <section id="character" class="page">
-            <h1>Character</h1>
-            <p class="text-muted">Character overview and biography.</p>
-            <div class="card" id="character-card">
-                <!-- populated dynamically -->
-            </div>
-        </section>
-
-        <section id="character-creation" class="page">
-            <h1>Create Your Character</h1>
-            <p class="text-muted">Choose a name and class to begin your adventure.</p>
-            <div class="form-group">
-                <label class="form-label">Name</label>
-                <input type="text" id="create-name" placeholder="Enter character name" />
-            </div>
-            <div class="form-group">
-                <label class="form-label">Class</label>
-                <select id="create-class">
-                    <option>Ranger</option>
-                    <option>Wizard</option>
-                    <option>Warrior</option>
-                    <option>Rogue</option>
-                </select>
-            </div>
-            <button id="create-button" class="add-button">Create Character</button>
-        </section>
-
-        <section id="stats" class="page">
-            <h1>Stats</h1>
-            <div class="kv-list" id="stats-list">
-                <!-- populated dynamically -->
-            </div>
-        </section>
-
-        <section id="skills" class="page">
-            <h1>Skills</h1>
-            <ul id="skills-list">
-                <!-- populated dynamically -->
-            </ul>
-        </section>
-
-        <section id="professions" class="page">
-            <h1>Professions</h1>
-            <p class="text-muted">Crafting and trade skills.</p>
-            <ul id="prof-list">
-                <!-- populated dynamically -->
-            </ul>
-        </section>
-
-        <section id="adventure" class="page">
-            <h1>Adventure</h1>
-            <p class="text-muted">Go on activities to gain gold, XP, and items.</p>
-            <div class="card">
-                <div id="adventure-msg" class="mb-2 text-muted">Choose an activity:</div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button id="act-explore" class="add-button">Explore</button>
-                    <button id="act-hunt" class="add-button">Hunt</button>
-                    <button id="act-quest" class="add-button">Complete Quest</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="settings" class="page">
-            <h1>Settings</h1>
-            <p class="text-muted">Game preferences and accessibility.</p>
-            <div class="form-group">
-                <label class="form-label">Text Size</label>
-                <select id="text-size-select">
-                    <option value="small">Small</option>
-                    <option value="normal" selected>Normal</option>
-                    <option value="large">Large</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <button id="reset-data" class="add-button">Reset Player & Create New</button>
-            </div>
-        </section>
-
-        <section id="quests" class="page">
-            <h1>Quests</h1>
-            <p class="text-muted">Active and completed quests.</p>
-            <ul id="quests-list">
-            </ul>
-        </section>
-
-        <section id="achievements" class="page">
-            <h1>Achievements</h1>
-            <p class="text-muted">Milestones you've earned.</p>
-            <ul id="achievements-list">
-            </ul>
-        </section>
-
-        <section id="codex" class="page">
-            <h1>Codex</h1>
-            <p class="text-muted">Lore, items, and monsters reference.</p>
-            <p>Codex entries will appear here.</p>
+    <main class="container">
+        <section class="landing-grid">
+            <a class="app-tile" href="https://quadfade.github.io/2dAutoBattlerWeb/" target="_blank" rel="noopener">
+                <div class="tile-icon">🗡️</div>
+                <div class="tile-label">2D Auto Battler</div>
+                <div class="tile-url">/2dAutoBattlerWeb/</div>
+            </a>
+            <a class="app-tile" href="https://quadfade.github.io/spellbook/" target="_blank" rel="noopener">
+                <div class="tile-icon">📚</div>
+                <div class="tile-label">Spell Book</div>
+                <div class="tile-url">/spellbook/</div>
+            </a>
+            <a class="app-tile" href="https://quadfade.github.io/spellsearch/" target="_blank" rel="noopener">
+                <div class="tile-icon">🔎</div>
+                <div class="tile-label">Spell Search</div>
+                <div class="tile-url">/spellsearch/</div>
+            </a>
+            <a class="app-tile" href="#" target="_blank" rel="noopener">
+                <div class="tile-icon">🎮</div>
+                <div class="tile-label">App 4</div>
+                <div class="tile-url">/app4/</div>
+            </a>
+            <a class="app-tile" href="#" target="_blank" rel="noopener">
+                <div class="tile-icon">🧭</div>
+                <div class="tile-label">App 5</div>
+                <div class="tile-url">/app5/</div>
+            </a>
+            <a class="app-tile" href="#" target="_blank" rel="noopener">
+                <div class="tile-icon">⚙️</div>
+                <div class="tile-label">App 6</div>
+                <div class="tile-url">/app6/</div>
+            </a>
+            <a class="app-tile" href="#" target="_blank" rel="noopener">
+                <div class="tile-icon">🌐</div>
+                <div class="tile-label">App 7</div>
+                <div class="tile-url">/app7/</div>
+            </a>
+            <a class="app-tile" href="#" target="_blank" rel="noopener">
+                <div class="tile-icon">📈</div>
+                <div class="tile-label">App 8</div>
+                <div class="tile-url">/app8/</div>
+            </a>
+            <a class="app-tile" href="#" target="_blank" rel="noopener">
+                <div class="tile-icon">🧩</div>
+                <div class="tile-label">App 9</div>
+                <div class="tile-url">/app9/</div>
+            </a>
         </section>
     </main>
 
-    <script>
-        // Menu toggle and routing functionality
-        const hamburgerToggle = document.getElementById('hamburger-toggle');
-        const menuPanel = document.getElementById('menu-panel');
-        const menuOverlay = document.getElementById('menu-overlay');
-        const menuClose = document.getElementById('menu-close');
-        const appPages = document.querySelectorAll('.page');
+    <footer class="container text-muted">
+        <small>Hosted on GitHub Pages. Replace tiles with your app URLs.</small>
+    </footer>
 
-        function setActivePage(id) {
-            appPages.forEach(p => p.classList.toggle('active', p.id === id));
-            // refresh UI when switching to certain pages
-            if (id === 'inventory') renderInventory();
-            if (id === 'character') renderCharacter();
-            if (id === 'stats') renderStats();
-            if (id === 'quests') renderQuests();
-            if (id === 'achievements') renderAchievements();
-            if (id === 'skills') renderSkills();
-            if (id === 'professions') renderProfessions();
-        }
-
-        function openMenu() {
-            menuPanel.classList.add('active');
-            menuOverlay.classList.add('active');
-            hamburgerToggle.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            menuPanel.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            hamburgerToggle.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function toggleMenu() {
-            if (menuPanel.classList.contains('active')) closeMenu(); else openMenu();
-        }
-
-        hamburgerToggle.addEventListener('click', toggleMenu);
-        menuClose.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-
-        document.querySelectorAll('.menu-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const page = this.dataset.page;
-                if (page) setActivePage(page);
-                closeMenu();
-            });
-        });
-
-        // Player storage helpers
-        function getPlayer() {
-            const raw = localStorage.getItem('player');
-            return raw ? JSON.parse(raw) : null;
-        }
-
-        function savePlayer(p) {
-            localStorage.setItem('player', JSON.stringify(p));
-        }
-
-        function createDefaultPlayer(name = 'Alden the Bold', cls = 'Ranger') {
-            return {
-                name,
-                class: cls,
-                level: 1,
-                xp: 0,
-                gold: 0,
-                stats: { Strength: 10, Dexterity: 10, Constitution: 10, Intelligence: 10, Wisdom: 10, Charisma: 10 },
-                inventory: ['Basic Sword'],
-                skills: [],
-                professions: [],
-                quests: [],
-                achievements: []
-            };
-        }
-
-        function renderInventory() {
-            const invEl = document.getElementById('inventory-list');
-            invEl.innerHTML = '';
-            const player = getPlayer() || createDefaultPlayer();
-            player.inventory.forEach(item => {
-                const d = document.createElement('div');
-                d.className = 'kv-item';
-                d.textContent = item;
-                invEl.appendChild(d);
-            });
-        }
-
-        function renderCharacter() {
-            const el = document.getElementById('character-card');
-            const player = getPlayer() || createDefaultPlayer();
-            el.innerHTML = `
-                <h3>Name: ${player.name}</h3>
-                <p>Level: ${player.level}</p>
-                <p>Class: ${player.class}</p>
-                <p class="mt-2">XP: ${player.xp} • Gold: ${player.gold}</p>
-            `;
-        }
-
-        function renderStats() {
-            const list = document.getElementById('stats-list');
-            list.innerHTML = '';
-            const player = getPlayer() || createDefaultPlayer();
-            Object.entries(player.stats).forEach(([k,v]) => {
-                const d = document.createElement('div');
-                d.className = 'kv-item';
-                d.textContent = `${k}: ${v}`;
-                list.appendChild(d);
-            });
-        }
-
-        function renderQuests() {
-            const ul = document.getElementById('quests-list');
-            ul.innerHTML = '';
-            const player = getPlayer() || createDefaultPlayer();
-            player.quests.forEach(q => {
-                const li = document.createElement('li');
-                li.textContent = q;
-                ul.appendChild(li);
-            });
-        }
-
-        function renderAchievements() {
-            const ul = document.getElementById('achievements-list');
-            ul.innerHTML = '';
-            const player = getPlayer() || createDefaultPlayer();
-            player.achievements.forEach(a => {
-                const li = document.createElement('li');
-                li.textContent = a;
-                ul.appendChild(li);
-            });
-        }
-
-        function renderSkills() {
-            const ul = document.getElementById('skills-list');
-            ul.innerHTML = '';
-            const player = getPlayer() || createDefaultPlayer();
-            player.skills.forEach(s => {
-                const li = document.createElement('li');
-                li.textContent = s;
-                ul.appendChild(li);
-            });
-        }
-
-        function renderProfessions() {
-            const ul = document.getElementById('prof-list');
-            ul.innerHTML = '';
-            const player = getPlayer() || createDefaultPlayer();
-            player.professions.forEach(pf => {
-                const li = document.createElement('li');
-                li.textContent = pf;
-                ul.appendChild(li);
-            });
-        }
-
-        // Character creation
-        document.getElementById('create-button').addEventListener('click', () => {
-            const name = document.getElementById('create-name').value.trim() || 'Adventurer';
-            const cls = document.getElementById('create-class').value;
-            const player = createDefaultPlayer(name, cls);
-            savePlayer(player);
-            renderInventory(); renderCharacter(); renderStats(); renderQuests(); renderAchievements(); renderSkills(); renderProfessions();
-            setActivePage('character');
-        });
-
-        // Reset data button
-        document.getElementById('reset-data').addEventListener('click', () => {
-            // Remove known keys and send user to character creation
-            ['player'].forEach(k => localStorage.removeItem(k));
-            setActivePage('character-creation');
-        });
-
-        // Adventure actions (simple simulations)
-        function award(player, {gold=0, xp=0, item=null, quest=null, achievement=null}) {
-            player.gold += gold;
-            player.xp += xp;
-            if (item) player.inventory.push(item);
-            if (quest) player.quests.push(quest);
-            if (achievement) player.achievements.push(achievement);
-            // level up every 100 xp
-            while (player.xp >= player.level * 100) {
-                player.xp -= player.level * 100;
-                player.level += 1;
-            }
-            savePlayer(player);
-            renderInventory(); renderCharacter(); renderStats(); renderQuests(); renderAchievements();
-        }
-
-        function showAdventureMessage(msg) {
-            const el = document.getElementById('adventure-msg');
-            el.textContent = msg;
-        }
-
-        document.getElementById('act-explore').addEventListener('click', () => {
-            const player = getPlayer() || createDefaultPlayer();
-            const gold = Math.floor(Math.random()*41)+10; //10-50
-            const xp = Math.floor(Math.random()*11)+5; //5-15
-            const found = Math.random() < 0.4 ? 'Old Coin' : null;
-            award(player, {gold, xp, item: found});
-            showAdventureMessage(`Explored and found ${gold} gold, ${xp} XP${found?`, and an item: ${found}`:''}`);
-        });
-
-        document.getElementById('act-hunt').addEventListener('click', () => {
-            const player = getPlayer() || createDefaultPlayer();
-            const gold = Math.floor(Math.random()*31)+5; //5-35
-            const xp = Math.floor(Math.random()*16)+10; //10-25
-            const item = Math.random() < 0.25 ? 'Beast Fang' : null;
-            award(player, {gold, xp, item});
-            showAdventureMessage(`Hunted and gained ${gold} gold and ${xp} XP${item?`, found: ${item}`:''}`);
-        });
-
-        document.getElementById('act-quest').addEventListener('click', () => {
-            const player = getPlayer() || createDefaultPlayer();
-            const gold = Math.floor(Math.random()*101)+50; //50-150
-            const xp = Math.floor(Math.random()*41)+20; //20-60
-            const ach = Math.random() < 0.2 ? 'Quest Completed' : null;
-            award(player, {gold, xp, achievement: ach});
-            showAdventureMessage(`Completed task: +${gold} gold, +${xp} XP${ach?`, achievement: ${ach}`:''}`);
-        });
-
-        // Initialize UI
-        if (!getPlayer()) {
-            // no saved player — show creation
-            setActivePage('character-creation');
-        } else {
-            renderInventory(); renderCharacter(); renderStats(); renderQuests(); renderAchievements(); renderSkills(); renderProfessions();
-            setActivePage('inventory');
-        }
-    </script>
 </body>
 
 </html>
