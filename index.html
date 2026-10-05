@@ -64,6 +64,10 @@
                <span class="menu-icon">📖</span>
                <span class="menu-label">Codex</span>
             </button>
+            <button class="menu-button" data-icon="🧪">
+               <span class="menu-icon">🧪</span>
+               <span class="menu-label">Mai Sandbox</span>
+            </button>
         </div>
     </nav>
 
@@ -92,9 +96,9 @@
             button.addEventListener('click', function(e) {
                // Don't close if it's the close button
                if (!e.target.closest('.menu-close')) {
-                   toggleMenu();
-                   console.log('Menu item clicked:', this.dataset.icon);
-               }
+                    toggleMenu();
+                    console.log('Menu item clicked:', this.dataset.icon);
+                }
             });
         });
     </script>
